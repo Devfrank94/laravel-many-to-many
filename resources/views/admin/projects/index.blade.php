@@ -18,6 +18,7 @@
                 <th scope="col"><a href="{{ route('admin.orderby', ['direction' => $direction]) }}" class="text-black">#ID</a></th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Tipo Sviluppo</th>
+                <th scope="col">Tecnologia</th>
                 <th scope="col">Data inizio sviluppo</th>
                 <th scope="col">Vedi</th>
                 <th scope="col">Modifica</th>
@@ -30,6 +31,16 @@
                         <th scope="row">{{$project->id}}</th>
                         <td>{{$project->title}}</td>
                         <td><span class="badge text-bg-dark">{{ $project->type?->name }}</span></td>
+                        <td>
+                          @forelse ( $project->tecnologies as $tecnology )
+
+                          <span class="badge text-bg-warning">{{ $tecnology->name }}</span>
+                          @empty
+
+                          <span class="badge text-bg-warning"> - N/D - </span>
+
+                          @endforelse
+                        </td>
                         @php
                           $date = date_create($project->date);
                         @endphp

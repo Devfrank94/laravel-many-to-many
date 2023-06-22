@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Tecnology;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Support\Facades\Storage;
@@ -20,8 +21,9 @@ class ProjectController extends Controller
     {
       $direction = 'asc';
       $projects = Project::orderBy('id', $direction)->paginate(5);
-      // dump($Projects);
-      return view('admin.projects.index', compact('projects', 'direction'));
+      $tecnologies = Tecnology::all();
+      // dd($tecnologies);
+      return view('admin.projects.index', compact('projects', 'direction', 'tecnologies'));
     }
 
     // funzion per filtrare id asc -> desc e viceversa
