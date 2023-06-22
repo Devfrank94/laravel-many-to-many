@@ -70,7 +70,7 @@ class ProjectController extends Controller
 
         $new_project->fill($form_data);
         $new_project->save();
-        
+
         //se ho inviato almeno una tecnologia
         if(array_key_exists('tecnologies', $form_data)){
 
@@ -105,7 +105,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
       $types = Type::all();
-      return view('admin.projects.edit', compact('project', 'types'));
+      $tecnologies = Tecnology::all();
+      
+      return view('admin.projects.edit', compact('project', 'types', 'tecnologies'));
     }
 
     /**
