@@ -6,6 +6,7 @@ use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\TecnologyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'verified'])
     Route::get('/stats', [DashboardController::class, 'stats'])->name('stats');
     Route::resource('projects', ProjectController::class);
     Route::resource('types', TypeController::class);
+    Route::resource('tecnologies', TecnologyController::class);
     Route::get('orderby/{direction}', [ProjectController::class, 'orderby'])->name('orderby');
 });
 

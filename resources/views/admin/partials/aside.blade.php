@@ -14,6 +14,9 @@
       <li class="mb-3">
         <a href="{{route('admin.types.index')}}"><i class="fa-solid fa-laptop-code"></i>  Types Project</a>
       </li>
+      <li class="mb-3">
+        <a href="{{route('admin.tecnologies.index')}}"><i class="fa-solid fa-microchip"></i>  Tecnologies</a>
+      </li>
     </ul>
   </nav>
 

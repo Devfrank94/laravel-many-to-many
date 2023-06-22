@@ -21,9 +21,8 @@ class ProjectController extends Controller
     {
       $direction = 'asc';
       $projects = Project::orderBy('id', $direction)->paginate(5);
-      $tecnologies = Tecnology::all();
       // dd($tecnologies);
-      return view('admin.projects.index', compact('projects', 'direction', 'tecnologies'));
+      return view('admin.projects.index', compact('projects', 'direction'));
     }
 
     // funzion per filtrare id asc -> desc e viceversa
