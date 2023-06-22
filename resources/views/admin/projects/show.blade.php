@@ -22,6 +22,17 @@
             <div class="card-body d-flex flex-column gap-1">
               <h5><div class="fw-bold">Nome Progetto:</div> {{$project->title}}</h5>
               <p><div class="fw-bold">Tipologia di Sviluppo:</div><span class="badge text-bg-primary">{{ $project->type?->name}}</span></p>
+              <p>
+                <div>
+                  <h6 class="fw-bold">Tecnologia utilizzata:</h6>
+                  @forelse ( $project->tecnologies as $tecnology )
+                  <span class="badge text-bg-warning">{{ $tecnology->name }}</span>
+                  @empty
+                  <span class="badge text-bg-warning"> - N/D - </span>
+                  @endforelse
+
+                </div>
+              </p>
               <p><div class="fw-bold">Descrizione:</div> {!!$project->description!!}</p>
               <span><div class="fw-bold">Data di inizio sviluppo:</div> {{ $data_formatted }}</span>
               <a href="{{route('admin.projects.index')}}" class=" btn btn-primary mt-5 w-100 fs-4 align-self-center">Indietro</a>

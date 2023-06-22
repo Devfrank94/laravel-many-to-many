@@ -40,6 +40,17 @@
                   <h5><div class="fw-bold">Nome Progetto:</div> {{$last_project->title}}</h5>
                     <p><div class="fw-bold">Descrizione:</div> {!!$last_project->description!!}</p>
                     <p><div class="fw-bold">Tipologia di Sviluppo:</div><span class="badge text-bg-primary">{{ $last_project->type->name}}</span></p>
+                    <p>
+                      <div>
+                        <h6 class="fw-bold">Tecnologia utilizzata:</h6>
+                        @forelse ( $last_project->tecnologies as $tecnology )
+                        <span class="badge text-bg-warning">{{ $tecnology->name }}</span>
+                        @empty
+                        <span class="badge text-bg-warning"> - N/D - </span>
+                        @endforelse
+
+                      </div>
+                    </p>
                     <span><div class="fw-bold">Data di inizio sviluppo:</div> {{ $last_project->date }}</span>
                   </div>
                 </div>
