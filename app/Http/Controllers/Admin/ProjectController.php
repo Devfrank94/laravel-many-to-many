@@ -41,7 +41,8 @@ class ProjectController extends Controller
     public function create()
     {
       $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+      $tecnologies = Tecnology::all();
+        return view('admin.projects.create', compact('types', 'tecnologies'));
     }
 
     /**
@@ -67,9 +68,17 @@ class ProjectController extends Controller
           $form_data['image_path'] = Storage::put('uploads', $form_data['thumb']);
         };
 
-
         $new_project->fill($form_data);
         $new_project->save();
+        
+        //se ho inviato almeno una tecnologia
+        if(array_key_exists('tecnologies', $form_data)){
+
+          // faccio attach al project appena creatol'array tecnologies proveninte dal form
+          $new_project->tecnologies()->attach($form_data['tecnologies']);
+
+        };
+
         return redirect()->route('admin.projects.show', $new_project);
     }
 

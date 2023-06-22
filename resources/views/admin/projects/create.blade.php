@@ -69,6 +69,20 @@
               @enderror
             </div>
 
+            <label class="form-label">Tecnologia di sviluppo</label>
+              <div class="mb-4 d-flex">
+              <div class="btn-group flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
+                @foreach ( $tecnologies as $tecnology )
+                <input type="checkbox" class="btn-check" id="tecnology{{ $loop->iteration }}" autocomplete="off" value="{{ $tecnology->id }}" name="tecnologies[]" @if(in_array($tecnology->id, old('tecnologies',[]))) checked @endif>
+                <label class="btn btn-outline-primary rounded-3 me-1 mt-1" for="tecnology{{ $loop->iteration }}">{{ $tecnology->name }}</label>
+
+                @endforeach
+
+              </div>
+              @error('technologies')
+                <span class="text-danger">{{$message}}</span>
+              @enderror
+            </div>
 
             <div class="mb-4">
                 <label for="thumb" class="form-label">Immagine Progetto</label>
