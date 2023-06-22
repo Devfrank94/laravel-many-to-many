@@ -25,7 +25,6 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/contacts', [PageController::class, 'contacts'])->name('contacts');
 
 
-
 // rotte valide se loggato
 Route::middleware(['auth', 'verified'])
 ->name('admin.')
